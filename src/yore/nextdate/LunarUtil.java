@@ -108,7 +108,6 @@ public class LunarUtil {
             }
             int monthTemp = 1;
             int leapMonth = getLeapMonth(lunarInfo[yearIndex]);
-            if (leapMonth!=0) System.out.println("leapMonth:" + leapMonth);
             int[] monthSize = getMonthSize(lunarInfo[yearIndex], leapMonth);
             while (true) {
                 int monthDays = (monthSize[monthTemp - 1] == 0) ? 29 : 30;
@@ -121,9 +120,7 @@ public class LunarUtil {
                 }
             }
             monthIndex = (leapMonth==0 || monthTemp<=leapMonth) ? monthTemp : monthTemp-1;
-            System.out.println("monthIndex:" + monthIndex + " monthTemp:" + monthTemp);
             if (monthIndex==leapMonth && monthTemp==leapMonth+1) isLeapMonth=true;
-            System.out.println(isLeapMonth);
         }
 
         // 处理农历日
