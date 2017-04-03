@@ -158,15 +158,6 @@ public class NextDate {
 
 
     public static void main(String[] args) {
-        int year = 2099;
-        for (int i=1; i<=12; i++) {
-            for (int j=1; j<=calendarMonth[isLeapYear(year)?1:0][i-1]; j++){
-                for (String s : getNextDateInfo(year, i, j)) {
-                    System.out.print(s + ",");
-                }
-                System.out.println();
-                System.out.println();
-            }
-        }
+        getNextDateInfo(Integer.parseInt(""),Integer.parseInt(""),Integer.parseInt(""));
     }
 }

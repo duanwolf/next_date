@@ -70,6 +70,7 @@ public class LunarUtil {
      * @param year  公历年
      * @param month 公历月
      * @param day   公历日
+     * @param total 这一天距1900-1-1的天数
      * @return 农历信息表字符串数组数组
      */
     public static String[] getLunarDateInfo(int year, int month, int day, int total) {
@@ -146,6 +147,11 @@ public class LunarUtil {
         return info;
     }
 
+    /**
+     * 获取该农历年的总天数
+     * @param info  农历年的16进制记录
+     * @return  总天数 int
+     */
     private static int getDayNum(long info) {
         int sum = 0;
         int leapMonth = getLeapMonth(info);
@@ -154,10 +160,21 @@ public class LunarUtil {
         return sum;
     }
 
+    /**
+     * 获取该农历年的闰月是哪月（1-12）
+     * @param info  该农历年的16进制记录
+     * @return  返回该年的闰月
+     */
     private static int getLeapMonth(long info) {
         return (int) info % 16;
     }
 
+    /**
+     * 获取该农历年的的每月月份大小 1：大，0：小
+     * @param info      该农历年的16进制记录
+     * @param leapMonth 该农历年的闰月
+     * @return  int[] {1, 0, 1, 1, 0.....} 有闰月13个数据，否则12个
+     */
     private static int[] getMonthSize(long info, int leapMonth) {
         int[] monthSize;
         int flag = (int) info >> 16;
